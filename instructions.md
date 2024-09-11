@@ -1,6 +1,6 @@
-* Embed your css into your HTML page 
+* Embed your css into your HTML page X
 * Create an HTML header section and add todo comments for the future implementation of the project 
-* Create footer that holds the temporary links for your social media handles that we will be adding as the project progresses
+* Create footer that holds the temporary links for your social media handles that we will be adding as the project progresses X
 * Create a main section that will hold the projects list 
 * In the main section nest an image tag and anchor tag for each image
 * Add the required and optional attributes to the image tag 
