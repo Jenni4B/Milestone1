@@ -5,23 +5,30 @@ body {
 
 h1 {
   color: darkblue;
+  font-family: "Lucida Handwriting";
+  text-align: center;
 }
 
 img{
 
-  width: 100;
+  width: 150;
   height: auto;
 
 }
 
-.image-container{
+
+.image-container {
   display: flex;
   justify-content: center;
   gap: 20px;
 }
 
-.image-container{
+.image-container img {
   width: 200px;
   height: auto;
+}
 
+.subheading{
+  text-align: center;
+  font-family: "Lucida Handwriting";
 }
