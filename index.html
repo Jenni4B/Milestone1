@@ -29,7 +29,7 @@ Add a dropbox box to select different categories -->
     <main>
         <div class="grid-container">
 
-            <div class="grid-item">
+            <div class="video-in-grid grid-item">
 
                 <div class="video-container">
                 <!-- embed code link copied from youtube -->
@@ -40,12 +40,29 @@ Add a dropbox box to select different categories -->
 
             </div>
 
-            <div class="grid-item">1</div>
+            <div class="grid-item">
+                <button class="auto-play" type="button" onclick="alert('Autoplay toggled on!')">Autoplay</button>
+                <div class="dropdown">
+                    <span>Genres</span>
+                    <div class="drop-content">
+                        <p>Art</p>
+                        <p>Gaming</p>
+                        <p>Funny</p>
+                        <p>News</p>
+                        <p>Trending</p>
+                        <p>New To You</p>
+                        
+                    </div>
+                </div>
+                <!-- Find how to make it toggle off when clicked again, also
+                an animation played in CSS(?) would be cool -->
+
+            </div>
 
             <div class="grid-item">
-                <div class="description-box">
+                <div class="description-box grid-item">
                     <details>
-                        <summary>Video Description</summary>
+                        <summary class="summary">Video Description</summary>
                             <p>Why are you still getting rickrolled in the year 2024. Noob.</p>
                     </details>
                 </div>
@@ -53,26 +70,13 @@ Add a dropbox box to select different categories -->
             <div class="grid-item">
                 <footer>
                     <a href="https://www.instagram.com/jeanbeanbc/"
-                        <p>Instagram</p>
+                        <span>Instagram</span>
                 </footer>
             </div>
             
         </div>
-<!-- 
-        <div class="video-container">
-            <iframe width="681" height="383" src="https://www.youtube.com/embed/fNqW_wgUZmw" title="Rick Astley - Never Gonna Give You Up(DRIIIFT Never Gonna Give BigRoom Up Mix)@WE ARE OUTRAGE EP.028" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <h1 class="videotitle">Rick Astley - Never Gonna Give You Up(DRIIIFT Never Gonna Give BigRoom Up Mix)@WE ARE OUTRAGE EP.028</h1>
-       
-        </div> -->
-
         
-
     </main>
 
-    <!--Stuff-->
-    <!-- <footer>
-        <a href="https://www.instagram.com/jeanbeanbc/"
-            <p>Instagram</p>
-    </footer> -->
 </body>
 </html>
