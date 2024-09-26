@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Milestone1</title>
     <link rel="stylesheet" href="msindexstyle.css">
+    <script src="java.js"></script>
 </head>
 
 
@@ -16,43 +17,54 @@
     <main>
         <div class="grid-container">
 
-            <div class="video-in-grid grid-item">
+            <div class="video-in-grid" class="grid-item">
 
                 <div class="video-container">
                 <!-- embed code link copied from youtube -->
-                    <iframe width="681" height="383" src="https://www.youtube.com/embed/fNqW_wgUZmw" title="Rick Astley - Never Gonna Give You Up(DRIIIFT Never Gonna Give BigRoom Up Mix)@WE ARE OUTRAGE EP.028" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    <h1 class="videotitle">Rick Astley - Never Gonna Give You Up(DRIIIFT Never Gonna Give BigRoom Up Mix)@WE ARE OUTRAGE EP.028</h1>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/NAKOzMekf2c?si=CE0tMYVxvOyaqLP0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <h1 class="videotitle">Roblox Halloween Event 2022</h1>
            
                 </div>
 
             </div>
 
             <div class="grid-item">
-                <button class="auto-play" type="button" onclick="alert('Autoplay toggled on!')">Autoplay</button>
-                
+                <button id="auto-play" type="button" onclick="alert('Autoplay toggled on!')">Autoplay</button>
+                <div class="controls">
+                    <br>
                 <!-- Adding a dropdown but it's not dropping or being hidden how I want it to -->
-                <div class="dropdown">
-                    <span>Genres</span>
-                    <div class="drop-content">
-                        <p>Art</p>
-                        <p>Gaming</p>
-                        <p>Funny</p>
-                        <p>News</p>
-                        <p>Trending</p>
-                        <p>New To You</p>
+                 <!--Update 9/19/24: It is dropping but it's not being hidden properly-->
+                    <div id="dropdown">
+                        <select id="Genres" class="drop-content">
+                            <option value="art">Art</option>
+                            <option value="gaming">Gaming</option>
+                            <option value="music">Music</option>
+                            <option value="cooking">Cooking</option>
+                        
+                        </select>
                         
                     </div>
                 </div>
                 <!-- Find how to make it toggle off when clicked again, also
                 an animation played in CSS(?) would be cool -->
-
-            </div>
+            </div>    
 
             <div class="grid-item">
                 <div class="description-box grid-item">
                     <details>
                         <summary class="summary">Video Description</summary>
-                            <p>Why are you still getting rickrolled in the year 2024. Noob.</p>
+                            <p>Like I said at the beginning of the video, I got a little busy (and possibly a bit demotivated) 
+                                and didn't feel like uploading 😅 <br>
+                                I didn't even play Roblox much at all <br>
+                                Thanks for sticking around and having patience! <br>
+                                Enjoy!<br>
+                                __________________________________________________<br>
+                                
+                                This video was my first run-through of this event <br>
+                                so a bunch of this is me not knowing what to do lmao<br>
+                                
+                                Check out my Instagram for more content! <br>
+                                It's on my channel page or you can just type @jeanbeanbc in the IG search bar</p>
                     </details>
                 </div>
             </div>
