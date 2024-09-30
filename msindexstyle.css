@@ -1,7 +1,7 @@
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
-    background-color: #2196F3;
+    background-color: #162e43;
     grid-template-rows: auto auto;          /* Rows will size based on content */
     gap: 10px;  
     padding: 10px;
@@ -65,4 +65,35 @@
 
 .dropdown-content a:hover {
   background-color: #f1f1f1;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+}
+
+.social-btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #000000;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#instagram:hover{
+  background-color: #c13584;
+  transform: scale(1.05);
+  transition: 1;
+}
+#github:hover{
+  background-color: #41277d;
+  transform: scale(1.05);
+  transition: 1;
+}
+
+
+footer{
+  background-color: #162e43;
 }
