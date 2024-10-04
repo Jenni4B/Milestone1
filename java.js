@@ -95,15 +95,16 @@ const genreDropdown = document.getElementById('genreDropdown');
 genreDropdown.addEventListener('change', function() {
     const selectedGenre = genreDropdown.value;
 
-    // Find the video that matches the selected genre
     const selectedVideoIndex = videos.findIndex(video => video.genre === selectedGenre);
 
-    // If a matching video is found, change the video
     if (selectedVideoIndex !== -1) {
         currentIndex = selectedVideoIndex;
-        changeVideo(currentIndex);
+        changeVideo(videos[currentIndex].link);
+        document.getElementById('video-title').textContent = videos[currentIndex].videoTitle; // Update the title
+        document.getElementById('video-description').textContent = videos[currentIndex].description; // Update the description
     }
 });
+
 
 // Autoplay toggle button functionality
 const autoplayButton = document.getElementById('auto-play');
@@ -124,4 +125,29 @@ function instagram() {
 
 function github() {
     window.open('https://github.com/Jenni4B', '_blank');
+}
+
+
+// THEMES
+
+function changeTheme(theme) {
+    const body = document.body; 
+    const header = document.querySelector('header'); 
+    const footer = document.querySelector('footer'); 
+    const videoContainer = document.querySelector('.video-container'); 
+    const descriptionBox = document.querySelector('.description-box'); 
+
+    if (theme === 'darkMode') {
+        body.classList.add('dark-mode');
+        header.classList.add('dark-mode');
+        footer.classList.add('dark-mode');
+        videoContainer.classList.add('dark-mode');
+        descriptionBox.classList.add('dark-mode');
+    } else {
+        body.classList.remove('dark-mode');
+        header.classList.remove('dark-mode');
+        footer.classList.remove('dark-mode');
+        videoContainer.classList.remove('dark-mode');
+        descriptionBox.classList.remove('dark-mode');
+    }
 }
