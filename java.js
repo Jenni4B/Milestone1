@@ -1,17 +1,17 @@
+// Instagram and github redirect
 let instagramLink = "https://www.instagram.com/jeanbeanbc/"
 let githubLink = "https://github.com/Jenni4B"
 
-
 function instagram(){
-    window.location.href = instagramLink;
-
+    window.open(instagramLink, '_blank');
 }
+
 function github(){
-    window.location.href = githubLink;
-
+    window.open(githubLink, '_blank');
 }
 
-}
+
+
 let videos = [{
     link: "https://www.youtube.com/watch?v=k5rEQ2wFPUw",
     videoTitle: "a playlist for night studies (dark academia)",
@@ -29,7 +29,7 @@ let videos = [{
    },
    {
     link: "https://www.youtube.com/watch?v=GVPAjftmqr4",
-    videoTitle: "Just trying to make some Cheese Cake..."
+    videoTitle: "Just trying to make some Cheese Cake...",
     description: "Cheese Cake | Sweet Potato Cheese Cake | 고구마 치즈 케이크 Today's menu is Sweet Potato Cheese Cake. It's relatively simple to make but it takes some time to cook."
    }
 ]
