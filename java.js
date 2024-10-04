@@ -25,22 +25,36 @@ let videos = [
     }
 ];
 
+// When the user selects the drop down, different videos should pop up based on their correlated arrays.
+// When the genre is cuurently on autoplay, those videos of that genre should autoplay
+
+let musicVideos[]
+let gamingVideos[]
+let artVideos[]
+let cookingVideos[]
+
+let currentIndex = 0; // Track the current video index
+let isAutoplayEnabled = false; // Track if autoplay is on or off
+
 // Function to change the video, update the title, and update the description
-function changeVideo(video) {
+function changeVideo(videoIndex) {
+    const video = videos[videoIndex];
     const videoContainer = document.querySelector('.video-container');
     const videoDescription = document.getElementById('video-description');
     const videoTitleElement = document.getElementById('video-title');
 
-    // Clear any previous video
+    // Clear the current video
     videoContainer.innerHTML = '';
 
     // Create a new iframe for the selected video
     const iframe = document.createElement('iframe');
     iframe.width = '560';
     iframe.height = '315';
-    iframe.src = video.link;
+    iframe.src = `${video.link}?autoplay=1&enablejsapi=1`; // Enable autoplay and JS API
+
     iframe.allowFullscreen = true;
     iframe.setAttribute('title', video.videoTitle);
+    iframe.setAttribute('id', 'videoPlayer');
 
     // Append the new video iframe
     videoContainer.appendChild(iframe);
@@ -50,6 +64,30 @@ function changeVideo(video) {
 
     // Update the description box with the selected video's description
     videoDescription.textContent = video.description;
+
+    // Set up the autoplay listener if autoplay is enabled
+    if (isAutoplayEnabled) {
+        iframe.addEventListener('load', () => {
+            const player = new YT.Player('videoPlayer', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        });
+    }
+}
+
+// Event listener to detect when the video ends
+function onPlayerStateChange(event) {
+    if (event.data === YT.PlayerState.ENDED) {
+        playNextVideo();
+    }
+}
+
+// Function to play the next video in the array
+function playNextVideo() {
+    currentIndex = (currentIndex + 1) % videos.length; // Move to the next video, loop back to the start if at the end
+    changeVideo(currentIndex); // Play the next video
 }
 
 // Event listener for the genre dropdown
@@ -58,11 +96,24 @@ genreDropdown.addEventListener('change', function() {
     const selectedGenre = genreDropdown.value;
 
     // Find the video that matches the selected genre
-    const selectedVideo = videos.find(video => video.genre === selectedGenre);
+    const selectedVideoIndex = videos.findIndex(video => video.genre === selectedGenre);
 
-    // If a matching video is found, change the video, title, and description
-    if (selectedVideo) {
-        changeVideo(selectedVideo);
+    // If a matching video is found, change the video
+    if (selectedVideoIndex !== -1) {
+        currentIndex = selectedVideoIndex;
+        changeVideo(currentIndex);
+    }
+});
+
+// Autoplay toggle button functionality
+const autoplayButton = document.getElementById('auto-play');
+autoplayButton.addEventListener('click', function () {
+    isAutoplayEnabled = !isAutoplayEnabled; // Toggle autoplay state
+
+    if (isAutoplayEnabled) {
+        autoplayButton.textContent = 'Autoplay ON';
+    } else {
+        autoplayButton.textContent = 'Autoplay OFF';
     }
 });
 
