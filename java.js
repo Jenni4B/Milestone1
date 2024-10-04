@@ -28,10 +28,10 @@ let videos = [
 // When the user selects the drop down, different videos should pop up based on their correlated arrays.
 // When the genre is cuurently on autoplay, those videos of that genre should autoplay
 
-let musicVideos[]
-let gamingVideos[]
-let artVideos[]
-let cookingVideos[]
+// let musicVideos[]
+// let gamingVideos[]
+// let artVideos[]
+// let cookingVideos[]
 
 let currentIndex = 0; // Track the current video index
 let isAutoplayEnabled = false; // Track if autoplay is on or off
