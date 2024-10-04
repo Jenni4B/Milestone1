@@ -1,35 +1,69 @@
-// Instagram and github redirect
-let instagramLink = "https://www.instagram.com/jeanbeanbc/"
-let githubLink = "https://github.com/Jenni4B"
-
-function instagram(){
-    window.open(instagramLink, '_blank');
-}
-
-function github(){
-    window.open(githubLink, '_blank');
-}
-
-
-
-let videos = [{
-    link: "https://www.youtube.com/watch?v=k5rEQ2wFPUw",
-    videoTitle: "a playlist for night studies (dark academia)",
-    description: "A video for late night studying. Make sure you drink water and stretch occasionally."
+let videos = [
+    {
+        link: "https://www.youtube.com/embed/k5rEQ2wFPUw",
+        videoTitle: "A playlist for night studies (dark academia)",
+        description: "A video for late night studying. Make sure you drink water and stretch occasionally.",
+        genre: "Music"
     },
-   {
-    link: "https://www.youtube.com/embed/NAKOzMekf2c?si=CE0tMYVxvOyaqLP0",
-    videoTitle: "Roblox Halloween Event 2022",
-    description: "Like I said at the beginning of the video, I got a little busy (and possibly a bit demotivated) and didn't feel like uploading I didn't even play Roblox much at all Thanks for sticking around and having patience! Enjoy!"
-   },
-   {
-    link: "https://www.youtube.com/watch?v=oSVPkuplVRY",
-    videoTitle: "I Built a PC that Makes Coffee",
-    description: "I turned my computer into an actual working coffee machine!"
-   },
-   {
-    link: "https://www.youtube.com/watch?v=GVPAjftmqr4",
-    videoTitle: "Just trying to make some Cheese Cake...",
-    description: "Cheese Cake | Sweet Potato Cheese Cake | 고구마 치즈 케이크 Today's menu is Sweet Potato Cheese Cake. It's relatively simple to make but it takes some time to cook."
-   }
-]
+    {
+        link: "https://www.youtube.com/embed/NAKOzMekf2c?si=CE0tMYVxvOyaqLP0",
+        videoTitle: "Roblox Halloween Event 2022",
+        description: "Thanks for sticking around and having patience! Enjoy!",
+        genre: "Gaming"
+    },
+    {
+        link: "https://www.youtube.com/embed/oSVPkuplVRY",
+        videoTitle: "I Built a PC that Makes Coffee",
+        description: "I turned my computer into an actual working coffee machine!",
+        genre: "Art"
+    },
+    {
+        link: "https://www.youtube.com/embed/GVPAjftmqr4",
+        videoTitle: "Just trying to make some Cheese Cake...",
+        description: "Sweet Potato Cheese Cake. It's simple but takes some time to cook.",
+        genre: "Cooking"
+    }
+];
+
+// Function to change the video, update the title, and update the description
+function changeVideo(video) {
+    const videoContainer = document.querySelector('.video-container');
+    const videoDescription = document.getElementById('video-description');
+    const videoTitleElement = document.getElementById('video-title');
+
+    // Clear any previous video
+    videoContainer.innerHTML = '';
+
+    // Create a new frame for the selected video
+    const iframe = document.createElement('iframe');
+    iframe.width = '560';
+    iframe.height = '315';
+    iframe.src = video.link;
+    iframe.allowFullscreen = true;
+    iframe.setAttribute('title', video.videoTitle);
+
+    // Append the new video
+    videoContainer.appendChild(iframe);
+    videoTitleElement.textContent = video.videoTitle;
+    videoDescription.textContent = video.description;
+}
+
+
+const genreDropdown = document.getElementById('genreDropdown');
+genreDropdown.addEventListener('change', function() {
+    const selectedGenre = genreDropdown.value;
+    const selectedVideo = videos.find(video => video.genre === selectedGenre);
+    if (selectedVideo) {
+        changeVideo(selectedVideo);
+    }
+});
+
+// Instagram and Github redirect functions
+function instagram() {
+    window.open('https://www.instagram.com/jeanbeanbc/', '_blank');
+}
+
+function github() {
+    window.open('https://github.com/Jenni4B', '_blank');
+}
+

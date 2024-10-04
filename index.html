@@ -5,88 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Milestone1</title>
     <link rel="stylesheet" href="msindexstyle.css">
-    <script src="java.js"></script>
-</head>
+    <script src="java.js" src="https://www.youtube.com/iframe_api"></script>
 
+</head>
 
 <body>
     <header>
-        <h1></h1>
+        <h1>Video Viewer</h1>
     </header>
-    
+
     <main>
         <div class="grid-container">
-
-            <div class="video-in-grid" class="grid-item1">
-
+            <div class="video-in-grid grid-item1">
                 <div class="video-container">
-                <!-- embed code link copied from youtube -->
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/NAKOzMekf2c?si=CE0tMYVxvOyaqLP0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    <h1 class="videotitle">Roblox Halloween Event 2022</h1>
-           
+
+                    <!-- The video iframe will be replaced based on dropdown selection -->
+
                 </div>
 
+                <!-- Video title will be placed here -->
+                 
+                <h2 id="video-title">Select a genre from the dropdown</h2>
             </div>
 
             <div class="grid-item2">
                 <button id="auto-play" type="button" onclick="alert('Autoplay toggled on!')">Autoplay</button>
                 <div class="controls">
                     <br>
-                <!-- Adding a dropdown but it's not dropping or being hidden how I want it to -->
-                 <!--Update 9/19/24: It is dropping but it's not being hidden properly-->
+
                     <div id="dropdown">
-                        <select id="Genres" class="drop-content">
-                            <option value="art">Art</option>
-                            <option value="gaming">Gaming</option>
-                            <option value="music">Music</option>
-                            <option value="cooking">Cooking</option>
-                        
+                        <select id="genreDropdown" class="drop-content">
+                            <option value="" disabled selected>Select a Genre</option>
+                            <option value="Art">Art</option>
+                            <option value="Gaming">Gaming</option>
+                            <option value="Music">Music</option>
+                            <option value="Cooking">Cooking</option>
                         </select>
-                        
+
+                        <section>
+                            <p>Theme:</p>
+                            <label>
+                                <input type="radio" name="theme" value="default" onclick="changeTheme('default')"> Default
+                            </label>
+                            <label>
+                                <input type="radio" name="theme" value="darkMode" onclick="changeTheme('darkMode')"> Dark Mode
+                            </label>
+                        </section>
                     </div>
                 </div>
-                <!-- Find how to make it toggle off when clicked again, also
-                an animation played in CSS(?) would be cool -->
-            </div>    
+            </div>
 
             <div class="grid-item3">
                 <div class="description-box grid-item">
                     <details>
                         <summary class="summary">Video Description</summary>
-                            <p>Like I said at the beginning of the video, I got a little busy (and possibly a bit demotivated) 
-                                and didn't feel like uploading 😅 <br>
-                                I didn't even play Roblox much at all <br>
-                                Thanks for sticking around and having patience! <br>
-                                Enjoy!<br>
-                                __________________________________________________<br>
-                                
-                                This video was my first run-through of this event <br>
-                                so a bunch of this is me not knowing what to do lmao<br>
-                                
-                                Check out my Instagram for more content! <br>
-                                It's on my channel page or you can just type @jeanbeanbc in the IG search bar</p>
+                        <p id="video-description">Select a video from the dropdown to see its description here.</p>
                     </details>
                 </div>
             </div>
-            
         </div>
-<footer>
-    <button onclick="instagram()" id="instagram" class="social-btn"> 
 
-        <p>Instagram</p>
-
-    </button>
-
-<!-- And this button takes you to github -->
-    <button onclick="github()" id="github" class="social-btn"> 
-
-        <p>Github</p>
-
-    </button>
-</footer>
-            
-        
+        <footer>
+            <button onclick="instagram()" id="instagram" class="social-btn">Instagram</button>
+            <button onclick="github()" id="github" class="social-btn">Github</button>
+        </footer>
     </main>
-
 </body>
 </html>

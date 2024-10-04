@@ -1,15 +1,24 @@
-.grid-container {
+html, body{
+  background-color: #5367cacc;
+}
+
+.grid-container{
     display: grid;
     grid-template-columns: auto auto auto;
-    background-color: #162e43;
     grid-template-rows: auto auto;          /* Rows will size based on content */
     gap: 10px;  
     padding: 10px;
   }
 
+footer{
+  background-color: #5367cacc;
+  gap: 10px;  
+  padding: 10px;
+}
+
 .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
+    border: 1px solid #000000cc;
     padding: 20px;
     font-size: 30px;
     text-align: center;
@@ -79,6 +88,7 @@
   color: white;
   text-decoration: none;
   border-radius: 20px;
+  width: 96px;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
@@ -94,7 +104,3 @@
 }
 
 
-footer{
-  background-color: #162e43;
-  align-items: center;
-}
