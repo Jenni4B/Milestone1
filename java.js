@@ -34,7 +34,7 @@ function changeVideo(video) {
     // Clear any previous video
     videoContainer.innerHTML = '';
 
-    // Create a new frame for the selected video
+    // Create a new iframe for the selected video
     const iframe = document.createElement('iframe');
     iframe.width = '560';
     iframe.height = '315';
@@ -42,17 +42,25 @@ function changeVideo(video) {
     iframe.allowFullscreen = true;
     iframe.setAttribute('title', video.videoTitle);
 
-    // Append the new video
+    // Append the new video iframe
     videoContainer.appendChild(iframe);
+
+    // Update the title below the video
     videoTitleElement.textContent = video.videoTitle;
+
+    // Update the description box with the selected video's description
     videoDescription.textContent = video.description;
 }
 
-
+// Event listener for the genre dropdown
 const genreDropdown = document.getElementById('genreDropdown');
 genreDropdown.addEventListener('change', function() {
     const selectedGenre = genreDropdown.value;
+
+    // Find the video that matches the selected genre
     const selectedVideo = videos.find(video => video.genre === selectedGenre);
+
+    // If a matching video is found, change the video, title, and description
     if (selectedVideo) {
         changeVideo(selectedVideo);
     }
@@ -66,4 +74,3 @@ function instagram() {
 function github() {
     window.open('https://github.com/Jenni4B', '_blank');
 }
-
