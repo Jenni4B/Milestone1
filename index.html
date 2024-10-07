@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Milestone1</title>
-    <link rel="stylesheet" href="msindexstyle.css">
+    <link rel="stylesheet" href="style.css">
     <script src="java.js" defer></script>
     <script src="https://www.youtube.com/iframe_api"></script>
-
 </head>
 
 <body>
@@ -31,42 +30,41 @@
                 <div class="controls">
                     <br>
 
-                    <div id="dropdown">
-                        <select id="genreDropdown" class="drop-content">
-                            <option value="" disabled selected>Select a Genre</option>
-                            <option value="Art">Art</option>
-                            <option value="Gaming">Gaming</option>
-                            <option value="Music">Music</option>
-                            <option value="Cooking">Cooking</option>
-                        </select>
+                    <select id="genreDropdown">
+                        <option value="" disabled selected>Genre</option>
+                        <option value="Art">Art</option>
+                        <option value="Gaming">Gaming</option>
+                        <option value="Music">Music</option>
+                        <option value="Cooking">Cooking</option>
+                        <option value="Animation">Animation</option>
+                    </select>
 
-                        <section>
-                            <h4>Theme:</h4>
-                            <label>
-                                <input type="radio" name="theme" value="default" onclick="changeTheme('default')"> Default
-                            </label>
-                            <label>
-                                <input type="radio" name="theme" value="darkMode" onclick="changeTheme('darkMode')"> Dark Mode
-                            </label>
-                        </section>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid-item3">
-                <div class="description-box grid-item">
-                    <details>
-                        <summary class="summary">Description</summary>
-                        <p id="video-description">Select a video from the dropdown to see its description here.</p>
-                    </details>
+                    <section>
+                        <h4>Theme:</h4>
+                        <label>
+                            <input type="radio" name="theme" value="default" onclick="changeTheme('default')"> Default
+                        </label>
+                        <label>
+                            <input type="radio" name="theme" value="darkMode" onclick="changeTheme('darkMode')"> Dark Mode
+                        </label>
+                    </section>
                 </div>
             </div>
         </div>
 
-        <footer>
-            <button onclick="instagram()" id="instagram" class="social-btn">Instagram</button>
-            <button onclick="github()" id="github" class="social-btn">Github</button>
-        </footer>
+        <div class="grid-item3">
+            <div class="description-box grid-item">
+                <details>
+                    <summary class="summary">Description</summary>
+                    <p id="video-description">Select a video from the dropdown to see its description here.</p>
+                </details>
+            </div>
+        </div>
     </main>
+
+    <footer>
+        <button onclick="instagram()" id="instagram" class="social-btn">Instagram</button>
+        <button onclick="github()" id="github" class="social-btn">Github</button>
+    </footer>
 </body>
 </html>
