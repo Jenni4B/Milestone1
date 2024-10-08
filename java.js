@@ -69,17 +69,22 @@ function changeVideo(videoIndex) {
     const videoTitleElement = document.getElementById('video-title');
     const videoContainer = document.querySelector('.video-container');
 
-    // Load the video into the iframe with autoplay flag
+    // Update current index
+    currentIndex = videoIndex;
+
+    // Load the video into the iframe with autoplay if enabled
     if (player && player.loadVideoById) {
-        // Use loadVideoById with autoplay
+        // Autoplay next video if autoplay is enabled
+        const autoplayParam = isAutoplayEnabled ? 1 : 0;
         player.loadVideoById({
             videoId: getVideoIdFromUrl(video.link),
             startSeconds: 0,
             suggestedQuality: 'default'
         });
     } else {
-        // Create an iframe and set the video source with autoplay
-        videoContainer.innerHTML = `<iframe id="videoPlayer" width="560" height="315" src="${video.link}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+        // Create an iframe and set the video source with autoplay flag
+        const autoplayFlag = isAutoplayEnabled ? "autoplay=1" : "autoplay=0";
+        videoContainer.innerHTML = `<iframe id="videoPlayer" width="560" height="315" src="${video.link}?${autoplayFlag}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
         // Reinitialize the player
         onYouTubeIframeAPIReady();
     }
@@ -87,18 +92,20 @@ function changeVideo(videoIndex) {
     // Set the title
     videoTitleElement.textContent = video.videoTitle;
 
-    // Update current index
-    currentIndex = videoIndex;
-
-    // Update recommended videos based on the current genre
-    const genre = video.genre;
-    filterAndDisplayRecommendedVideos(genre);
-
     // Delay description update until the video is loaded
     setTimeout(() => {
         const videoDescription = document.getElementById('video-description');
         videoDescription.textContent = video.description;
-    }, 200); // Adjust the timeout as needed
+    }, 200);
+
+    // Update recommended videos based on the current genre
+    const genre = video.genre;
+    filterAndDisplayRecommendedVideos(genre);
+}
+
+function playNextVideo() {
+    currentIndex = (currentIndex + 1) % videos.length;
+    changeVideo(currentIndex);
 }
 
 function onPlayerStateChange(event) {
@@ -108,10 +115,6 @@ function onPlayerStateChange(event) {
     }
 }
 
-function playNextVideo() {
-    currentIndex = (currentIndex + 1) % videos.length;
-    changeVideo(currentIndex);
-}
 
 // Filter and display recommended videos excluding the current one
 function filterAndDisplayRecommendedVideos(genre) {
@@ -131,7 +134,9 @@ function renderVideos(filteredVideos) {
         recommendedVideosContainer.innerHTML = "<p>No videos available for this genre.</p>";
     } else {
         filteredVideos.forEach((video, index) => {
+
             // Create a clickable div for each video and add the event listener
+
             const videoDiv = document.createElement('div');
             videoDiv.classList.add('recommended-video');
             videoDiv.setAttribute('data-video-index', videos.indexOf(video));  // Store the index of the video
@@ -174,6 +179,9 @@ document.addEventListener('DOMContentLoaded', function() {
     changeVideo(currentIndex);
 });
 
+
+
+// SOCIAL MEDIA REDIRECTS
 function instagram() {
     window.open('https://www.instagram.com/jeanbeanbc/', '_blank');
 }
