@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="java.js" defer></script>
     <script src="https://www.youtube.com/iframe_api"></script>
+
 </head>
 
 <body>
@@ -17,16 +18,28 @@
     <main>
         <div class="grid-container">
             <div class="video-in-grid grid-item1">
+
                 <div class="video-container">
                     <!-- The video iframe will be replaced based on dropdown selection -->
                 </div>
+
                 <!-- Video title will be placed here -->
+
                 <h2 id="video-title">Select a video from the dropdown</h2>
+
+                <div class="description-box">
+
+                    <details>
+                        <summary class="summary">Description</summary>
+                        <p id="video-description">Select a video from the dropdown to see its description here.</p>
+                    </details>
+
+                </div>
             </div>
 
             <div class="grid-item2">
 
-                <button id="autoplayButton" type="button" onclick="autoplayToggle()">Autoplay</button>
+                <button id="autoplayButton" type="button">Autoplay OFF</button>
                 <div class="controls">
                     <br>
 
@@ -40,24 +53,25 @@
                     </select>
 
                     <section>
+
                         <h4>Theme:</h4>
+
                         <label>
                             <input type="radio" name="theme" value="default" onclick="changeTheme('default')"> Default
                         </label>
+
                         <label>
                             <input type="radio" name="theme" value="darkMode" onclick="changeTheme('darkMode')"> Dark Mode
                         </label>
+
                     </section>
                 </div>
             </div>
-        </div>
 
-        <div class="grid-item3">
-            <div class="description-box grid-item">
-                <details>
-                    <summary class="summary">Description</summary>
-                    <p id="video-description">Select a video from the dropdown to see its description here.</p>
-                </details>
+            <!-- Recommended videos section -->
+
+            <div class="grid-item3">
+                <div id="recommendedVideosContainer" class="recommended-videos">More videos will appear here.</div>
             </div>
         </div>
     </main>
@@ -66,5 +80,6 @@
         <button onclick="instagram()" id="instagram" class="social-btn">Instagram</button>
         <button onclick="github()" id="github" class="social-btn">Github</button>
     </footer>
+
 </body>
 </html>

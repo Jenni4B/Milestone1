@@ -1,8 +1,8 @@
 let videos = [
     {
-        link: "https://www.youtube.com/embed/k5rEQ2wFPUw",
-        videoTitle: "A playlist for night studies (dark academia)",
-        description: "A video for late night studying. Make sure you drink water and stretch occasionally.",
+        link: "https://www.youtube.com/embed/d2V7x93Kd78?si=mSYbngNrYej8Yciy",
+        videoTitle: "You're Lost in a Forgotten Library | Melancholic Piano with Rain | Dark Academia Playlist",
+        description: "🎹 Music and art created by Mochi Lofi Cafe",
         genre: "Music"
     },
     {
@@ -28,27 +28,18 @@ let videos = [
         videoTitle: "We'll Be Fine | EPIC: The Musical Animatic",
         description: "The only bad part of the song is that it isn't 5 minutes long.",
         genre: "Animation"
-    }
-];
-
-let musicVideos = [
+    },
     {
-        link: "https://www.youtube.com/embed/R1r9nLYcqBU?si=nNSEiL_u-7HRVq50",
-        videoTitle: "2-HOUR STUDY WITH ME | Calm Piano ️🎹 Rain sound🌧️ | Pomodoro 50/10 | Rainy Day - Spring 2024 🌸",
-        description: "Hi There~ Thank you for joining me today🌧️🥕 If you like this video, you can Like & Subscribe to support my channel. Thank you so much for your support! ^^",
+        link: "https://www.youtube.com/embed/bWIgy-Ls-SU?si=IzQQ9BdMYNxcNe9h",
+        videoTitle: "The Horse and The Infant",
+        description: "The Horse and the Infant · Jorge Rivera-Herrans · Luke Holt · Cast of EPIC: The Musical || ℗ Winion Entertainment LLC",
         genre: "Music"
     },
     {
-        link: "",
-        videoTitle: "",
-        description: "",
-        genre: ""
-    },
-    {
-        link: "",
-        videoTitle: "",
-        description: "",
-        genre: ""
+        link: "https://www.youtube.com/embed/WOgxiS33tME?si=Pd2eE8CDyGFbi57k",
+        videoTitle: "Ruthlessness | Epic: The Musical Animatic",
+        description: "This one took a bit longer than expected but with it being over 1000 frames and having most of the water being animated I think I will let it slide this time! OH, I finally got my new mic in so I can do the how its made videos for these animatics.",
+        genre: "Animation"
     }
 ];
 
@@ -76,19 +67,42 @@ function getVideoIdFromUrl(url) {
 function changeVideo(videoIndex) {
     const video = videos[videoIndex];
     const videoTitleElement = document.getElementById('video-title');
-    const videoDescription = document.getElementById('video-description');
+    const videoContainer = document.querySelector('.video-container');
 
+    // Load the video into the iframe with autoplay flag
     if (player && player.loadVideoById) {
-        player.loadVideoById(getVideoIdFromUrl(video.link));
+        // Use loadVideoById with autoplay
+        player.loadVideoById({
+            videoId: getVideoIdFromUrl(video.link),
+            startSeconds: 0,
+            suggestedQuality: 'default'
+        });
     } else {
-        console.error('YouTube player not ready');
+        // Create an iframe and set the video source with autoplay
+        videoContainer.innerHTML = `<iframe id="videoPlayer" width="560" height="315" src="${video.link}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+        // Reinitialize the player
+        onYouTubeIframeAPIReady();
     }
 
+    // Set the title
     videoTitleElement.textContent = video.videoTitle;
-    videoDescription.textContent = video.description;
+
+    // Update current index
+    currentIndex = videoIndex;
+
+    // Update recommended videos based on the current genre
+    const genre = video.genre;
+    filterAndDisplayRecommendedVideos(genre);
+
+    // Delay description update until the video is loaded
+    setTimeout(() => {
+        const videoDescription = document.getElementById('video-description');
+        videoDescription.textContent = video.description;
+    }, 200); // Adjust the timeout as needed
 }
 
 function onPlayerStateChange(event) {
+    // Check if the video has ended and autoplay is enabled
     if (event.data === YT.PlayerState.ENDED && isAutoplayEnabled) {
         playNextVideo();
     }
@@ -99,15 +113,54 @@ function playNextVideo() {
     changeVideo(currentIndex);
 }
 
+// Filter and display recommended videos excluding the current one
+function filterAndDisplayRecommendedVideos(genre) {
+    // Filter videos by genre and exclude the currently playing video
+    const filteredVideos = videos.filter((video, index) => video.genre === genre && index !== currentIndex);
+
+    // Render the recommended videos
+    renderVideos(filteredVideos);
+}
+
+// Updated renderVideos function
+function renderVideos(filteredVideos) {
+    const recommendedVideosContainer = document.getElementById('recommendedVideosContainer');
+    recommendedVideosContainer.innerHTML = ""; // Clear previous videos
+
+    if (filteredVideos.length === 0) {
+        recommendedVideosContainer.innerHTML = "<p>No videos available for this genre.</p>";
+    } else {
+        filteredVideos.forEach((video, index) => {
+            // Create a clickable div for each video and add the event listener
+            const videoDiv = document.createElement('div');
+            videoDiv.classList.add('recommended-video');
+            videoDiv.setAttribute('data-video-index', videos.indexOf(video));  // Store the index of the video
+            videoDiv.innerHTML = `
+                <iframe width="280" height="158" src="${video.link}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <h4>${video.videoTitle}</h4>
+                <p>${video.description}</p>
+            `;
+
+            // Add the click event listener
+            videoDiv.addEventListener('click', function() {
+                const videoIndex = parseInt(this.getAttribute('data-video-index'), 10);
+                changeVideo(videoIndex); // Update the current video
+            });
+
+            // Append each videoDiv to the recommendedVideosContainer
+            recommendedVideosContainer.appendChild(videoDiv);
+        });
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const genreDropdown = document.getElementById('genreDropdown');
     genreDropdown.addEventListener('change', function() {
         const selectedGenre = this.value;
-        const selectedVideoIndex = videos.findIndex(video => video.genre === selectedGenre);
 
-        if (selectedVideoIndex !== -1) {
-            currentIndex = selectedVideoIndex;
-            changeVideo(currentIndex);
+        // If a genre is selected, filter and display the videos for that genre
+        if (selectedGenre) {
+            filterAndDisplayRecommendedVideos(selectedGenre);
         }
     });
 
@@ -116,6 +169,9 @@ document.addEventListener('DOMContentLoaded', function() {
         isAutoplayEnabled = !isAutoplayEnabled;
         this.textContent = isAutoplayEnabled ? 'Autoplay ON' : 'Autoplay OFF';
     });
+
+    // Initialize the first video
+    changeVideo(currentIndex);
 });
 
 function instagram() {
@@ -134,7 +190,7 @@ function changeTheme(theme) {
         document.querySelector('.video-container'),
         document.querySelector('.description-box')
     ];
-    
+
     elements.forEach(el => {
         if (el) {
             el.classList.toggle('dark-mode', theme === 'darkMode');
