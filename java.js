@@ -167,6 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (selectedGenre) {
             filterAndDisplayRecommendedVideos(selectedGenre);
         }
+        
     });
 
     const autoplayButton = document.getElementById('autoplayButton');
