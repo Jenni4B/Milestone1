@@ -130,23 +130,42 @@ function renderVideos(filteredVideos) {
     const recommendedVideosContainer = document.getElementById('recommendedVideosContainer');
     recommendedVideosContainer.innerHTML = ""; // Clear previous videos
 
-    if (filteredVideos.length === 0) {
-        recommendedVideosContainer.innerHTML = "<p>No videos available for this genre.</p>";
+    // If no filteredVideos are provided, load all videos
+    if (!filteredVideos || filteredVideos.length === 0) {
+        recommendedVideosContainer.innerHTML = "<p>No videos available for this genre. Loading all videos instead.</p>";
+
+        // load all videos in case filteredVideos is empty or not provided
+        videos.forEach((video, index) => {
+
+            // Create a clickable div for each video and add the event listener
+            const videoDiv = document.createElement('div');
+            videoDiv.classList.add('recommended-video');
+            videoDiv.setAttribute('data-video-index', index);  // Store the index of the video
+            videoDiv.innerHTML = `
+                <iframe width="280" height="158" src="${video.link}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <h4>${video.videoTitle}</h4> `;
+
+            videoDiv.addEventListener('click', function() {
+                const videoIndex = parseInt(this.getAttribute('data-video-index'), 10);
+                changeVideo(videoIndex); // Update the current video
+            });
+
+            // Append each videoDiv to the recommendedVideosContainer
+            recommendedVideosContainer.appendChild(videoDiv);
+        });
+
     } else {
+        // If filteredVideos are available, load them
         filteredVideos.forEach((video, index) => {
 
             // Create a clickable div for each video and add the event listener
-
             const videoDiv = document.createElement('div');
             videoDiv.classList.add('recommended-video');
             videoDiv.setAttribute('data-video-index', videos.indexOf(video));  // Store the index of the video
             videoDiv.innerHTML = `
                 <iframe width="280" height="158" src="${video.link}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                <h4>${video.videoTitle}</h4>
-                <p>${video.description}</p>
-            `;
+                <h4>${video.videoTitle}</h4> `;
 
-            // Add the click event listener
             videoDiv.addEventListener('click', function() {
                 const videoIndex = parseInt(this.getAttribute('data-video-index'), 10);
                 changeVideo(videoIndex); // Update the current video
@@ -167,7 +186,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (selectedGenre) {
             filterAndDisplayRecommendedVideos(selectedGenre);
         }
-        
     });
 
     const autoplayButton = document.getElementById('autoplayButton');
