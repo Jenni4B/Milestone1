@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milestone1</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="java.js" defer></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+</head>
+
+<body>
+    <header>
+        <h1>Settings and Profile</h1>
+        <nav class="navbar">
+            <ul>
+                <li><button onclick="location.href='index.html';">Home</button></li>
+                <li><button onclick="location.href='feedback.html';">Feedback</button></li>
+                <li><button onclick="location.href='settings.html';">Settings</button></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <main>
+        <section>
+
+            <h4>Theme:</h4>
+
+            <label>
+                <input type="radio" name="theme" value="default" onclick="changeTheme('default')"> Default
+            </label>
+
+            <label>
+                <input type="radio" name="theme" value="darkMode" onclick="changeTheme('darkMode')"> Dark Mode
+            </label>
+
+        </section>
+    </main>
+
+    <footer>
+        <button onclick="instagram()" id="instagram" class="social-btn">Instagram</button>
+        <button onclick="github()" id="github" class="social-btn">Github</button>
+    </footer>
+
+</body>
+</html>

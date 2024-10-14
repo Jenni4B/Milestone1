@@ -35,7 +35,25 @@ footer {
   text-align: center;
 }
 
+/* NAVIGATION BAR SETTINGS */
 
+.navbar ul {
+  list-style: none;
+  display: flex;         
+  justify-content: flex-start;  
+}
+
+.navbar li {
+  margin: 0 15px;
+}
+
+.navbar button {
+  color: rgb(25, 24, 24);             /* Set link text color */
+  text-decoration: none;    /* Remove underline */
+  padding: 10px 15px;       /* Add padding around the link */
+  display: block;           /* Ensure the entire area is clickable */
+  transition: background-color 0.3s;  /* Smooth hover effect */
+}
 /* VIDEO ELEMENTS */
 
 .videotitle {
@@ -94,6 +112,10 @@ footer {
 
 body.dark-mode {
   background-color: #252323;
+  color: white;
+}
+
+.navbar.dark-mode {
   color: white;
 }
 
