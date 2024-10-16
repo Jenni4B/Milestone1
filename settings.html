@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Milestone1</title>
+    <title>Settings</title>
     <link rel="stylesheet" href="style.css">
     <script src="java.js" defer></script>
     <script src="https://www.youtube.com/iframe_api"></script>
@@ -22,8 +22,28 @@
 
         </nav>
     </header>
-
     <main>
+        <section class="profile-section">
+            <h2>User Profile</h2>
+            <form id="profile-form">
+                <div class="profile-field">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" placeholder="Enter your username">
+                </div>
+
+                <div class="profile-field">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </div>
+
+                <div class="profile-field">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" placeholder="Enter your password">
+                </div>
+
+                <button type="button" id="update-profile">Update Profile</button>
+            </form>
+        </section>
         <section>
 
             <h4>Theme:</h4>
@@ -46,3 +66,28 @@
 
 </body>
 </html>
+    <script>
+        document.getElementById('saveButton').addEventListener('click', function() {
+            const user = {
+                name: 'John Doe',
+                age: 30,
+                email: 'le.com'
+            };
+            localStorage.setItem('user', JSON.stringify(user));
+            alert('User saved to Local Storage!');
+        });
+
+        document.getElementById('loadButton').addEventListener('click', function() {
+            const userData = JSON.parse(localStorage.getItem('user'));
+            if (userData) {
+                alert(`Name: ${userData.name}, Age: ${userData.age}, Email: ${userData.email}`);
+            } else {
+                alert('No user found in Local Storage.');
+            }
+        });
+
+        document.getElementById('removeButton').addEventListener('click', function() {
+            localStorage.removeItem('user');
+            alert('User removed from Local Storage!');
+        });
+    </script>
