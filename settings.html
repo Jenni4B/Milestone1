@@ -26,34 +26,35 @@
         <section class="profile-section">
             <h2>User Profile</h2>
             <form id="profile-form">
+
                 <div class="profile-field">
                     <label for="username">Username:</label>
-                    <input type="text" id="username" placeholder="Enter your username">
+                    <input type="text" id="username" placeholder="Username">
                 </div>
 
                 <div class="profile-field">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" placeholder="Enter your email">
+                    <input type="email" id="email" placeholder="Email">
                 </div>
 
                 <div class="profile-field">
                     <label for="password">Password:</label>
-                    <input type="password" id="password" placeholder="Enter your password">
+                    <input type="password" id="password" placeholder="Password">
                 </div>
 
                 <button type="button" id="update-profile">Update Profile</button>
             </form>
         </section>
-        <section>
+        <section class="theme-setting">
 
-            <h4>Theme:</h4>
+            <h2>Theme:</h2>
 
             <label>
-                <input type="radio" name="theme" value="default" onclick="changeTheme('default')"> Default
+                <button type="radio" name="theme" value="default" onclick="changeTheme('default')"> Default </button>
             </label>
 
             <label>
-                <input type="radio" name="theme" value="darkMode" onclick="changeTheme('darkMode')"> Dark Mode
+                <button type="radio" name="theme" value="darkMode" onclick="changeTheme('darkMode')"> Dark Mode </button>
             </label>
 
         </section>

@@ -17,7 +17,30 @@ footer {
   text-align: center;
 }
 
-/* GRID STUFF */
+/* DARK MODE */
+
+body.dark-mode {
+  background-color: #252323;
+  color: white;
+}
+
+.navbar.dark-mode {
+  color: white;
+}
+
+footer.dark-mode {
+  background-color: #3b0a3c;
+}
+
+.grid-item.dark-mode {
+  background-color: #1c1c1c;
+}
+
+.description-box.dark-mode {
+  background-color: #2a2a2a;
+}
+
+/* INDEX GRID STUFF */
 
 .grid-container {
   display: grid;
@@ -35,6 +58,22 @@ footer {
   text-align: center;
 }
 
+
+            /* SETTINGS PAGE */
+.profile-section, .theme-setting {
+  padding-left: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.theme-setting{
+  margin-bottom: 30px;
+}
+
+
+#update-profile {
+  margin-top: 25px;
+}
+
 /* NAVIGATION BAR SETTINGS */
 
 .navbar ul {
@@ -48,12 +87,14 @@ footer {
 }
 
 .navbar button {
-  color: rgb(25, 24, 24);             /* Set link text color */
+  color: rgb(25, 24, 24);    
   text-decoration: none;    /* Remove underline */
   padding: 10px 15px;       /* Add padding around the link */
-  display: block;           /* Ensure the entire area is clickable */
+  display: block;
   transition: background-color 0.3s;  /* Smooth hover effect */
 }
+
+
 /* VIDEO ELEMENTS */
 
 .videotitle {
@@ -106,27 +147,4 @@ footer {
   background-color: #41277d;
   transform: scale(1.05);
   transition: 1;
-}
-
-/* DARK MODE */
-
-body.dark-mode {
-  background-color: #252323;
-  color: white;
-}
-
-.navbar.dark-mode {
-  color: white;
-}
-
-footer.dark-mode {
-  background-color: #3b0a3c;
-}
-
-.grid-item.dark-mode {
-  background-color: #1c1c1c;
-}
-
-.description-box.dark-mode {
-  background-color: #2a2a2a;
 }
