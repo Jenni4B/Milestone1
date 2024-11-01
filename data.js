@@ -40,5 +40,20 @@ let videos = [
         videoTitle: "Ruthlessness | Epic: The Musical Animatic",
         description: "This one took a bit longer than expected but with it being over 1000 frames and having most of the water being animated I think I will let it slide this time! OH, I finally got my new mic in so I can do the how its made videos for these animatics.",
         genre: "Animation"
+    },
+    {
+        link: "https://www.youtube.com/embed/z_5Hokpu0vg?si=fv2bM6QoNy2ox3zG",
+        videoTitle: "God Games | Epic: The Musical Animatic",
+        description: "WOW okay 2000 frames later and here I am with it FINALLY. @JayHerrans wanted fight scenes so I figured I would try my hand at them.",
+        genre: "Animation"
     }
 ];
+
+// SOCIAL MEDIA REDIRECTS
+function instagram() {
+    window.open('https://www.instagram.com/jeanbeanbc/', '_blank');
+}
+
+function github() {
+    window.open('https://github.com/Jenni4B', '_blank');
+}
