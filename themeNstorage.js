@@ -32,3 +32,37 @@ document.addEventListener('DOMContentLoaded', () => {
     loadSavedTheme();
 });
 
+let username = document.getElementById('username')
+let password = document.getElementById('password')
+let email = document.getElementById('email')
+const updateProfile = document.getElementById('update-profile')
+
+updateProfile.addEventListener('click', () => {
+    // Retrieve the values when the button is clicked
+    localStorage.setItem('username', username.value);
+    localStorage.setItem('password', password.value);
+    localStorage.setItem('email', email.value);
+    alert("Profile items saved! <3")
+});
+
+const showPassword = document.getElementById('showPassword')
+
+showPassword.addEventListener('click', ()=> {
+
+    // Checks if the password field is type "password"
+
+    if (password.type === 'password') {
+        // Change the type to "text" to show the password
+
+        password.type = 'text';
+        showPassword.textContent = '👁️‍🗨️'; // Update button text
+
+    } 
+    
+    else {
+        // Change the type back to "password" to hide it
+        password.type = 'password';
+        showPassword.textContent = '👁️'; 
+    }
+    
+});
