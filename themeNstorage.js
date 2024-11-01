@@ -31,19 +31,40 @@ function loadSavedTheme() {
 document.addEventListener('DOMContentLoaded', () => {
     loadSavedTheme();
 });
+// Get references to input fields and button
+let username = document.getElementById('username');
+let password = document.getElementById('password');
+let email = document.getElementById('email');
+const updateProfile = document.getElementById('update-profile');
 
-let username = document.getElementById('username')
-let password = document.getElementById('password')
-let email = document.getElementById('email')
-const updateProfile = document.getElementById('update-profile')
-
+// Event listener to save data to localStorage when the button is clicked
 updateProfile.addEventListener('click', () => {
     // Retrieve the values when the button is clicked
     localStorage.setItem('username', username.value);
     localStorage.setItem('password', password.value);
     localStorage.setItem('email', email.value);
-    alert("Profile items saved! <3")
+    alert("Profile items saved! <3");
 });
+
+// Function to load saved data from localStorage
+function loadProfileData() {
+    let savedUsername = localStorage.getItem('username');
+    let savedPassword = localStorage.getItem('password');
+    let savedEmail = localStorage.getItem('email');
+
+    if (savedUsername) {
+        username.value = savedUsername;
+    }
+    if (savedPassword) {
+        password.value = savedPassword;
+    }
+    if (savedEmail) {
+        email.value = savedEmail; 
+    }
+}
+
+// Call loadProfileData when the page loads
+window.onload = loadProfileData;
 
 const showPassword = document.getElementById('showPassword')
 
