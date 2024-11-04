@@ -17,6 +17,9 @@ footer {
   text-align: center;
 }
 
+
+
+
 /* DARK MODE */
 
 body.dark-mode {
@@ -49,6 +52,7 @@ footer.dark-mode {
   color: white;
 }
 
+
 /* INDEX GRID STUFF */
 
 .grid-container {
@@ -69,7 +73,7 @@ footer.dark-mode {
 
 
             /* SETTINGS PAGE */
-.profile-section, .theme-setting {
+.profile-section {
   padding-left: 50px;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -203,3 +207,13 @@ footer.dark-mode {
 }
 
 
+
+/* Default mode label color inside the modal */
+.modal-container label {
+  color: black;
+}
+
+/* Dark mode label color inside the modal */
+body.dark-mode .modal-container label {
+  color: white;
+}

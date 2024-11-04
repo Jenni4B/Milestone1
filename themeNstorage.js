@@ -125,6 +125,13 @@ function userProfile() {
         const password = document.getElementById('password').value;
         const email = document.getElementById('email').value;
 
+        // Validation for username length
+        
+        if (username.length < 4) {
+        alert("Username must be at least 4 characters long.");
+        return; // Stop the function if validation fails
+    }
+
         localStorage.setItem('username', username);
         localStorage.setItem('password', password);
         localStorage.setItem('email', email);
