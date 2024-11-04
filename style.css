@@ -17,9 +17,6 @@ footer {
   text-align: center;
 }
 
-
-
-
 /* DARK MODE */
 
 body.dark-mode {
@@ -206,14 +203,11 @@ footer.dark-mode {
   transition: 1;
 }
 
-
-
-/* Default mode label color inside the modal */
-.modal-container label {
+.modal-label {
   color: black;
 }
 
-/* Dark mode label color inside the modal */
-body.dark-mode .modal-container label {
+/* Dark mode label color */
+body.dark-mode .modal-label {
   color: white;
 }

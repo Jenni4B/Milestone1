@@ -10,7 +10,8 @@ function changeTheme(theme) {
         document.querySelector('.video-container'),
         document.querySelector('.description-box'),
         document.querySelector('.modal-overlay'),
-        document.querySelector('.modal-container')
+        document.querySelector('.modal-container'),
+        ...document.querySelectorAll('.modal-container label') // Target labels inside the modal
     ];
 
     elements.forEach(el => {
@@ -22,6 +23,7 @@ function changeTheme(theme) {
     // Save the selected theme to localStorage
     localStorage.setItem('theme', theme);
 }
+
 
 
 // Function to load and apply saved theme on page load
@@ -87,7 +89,6 @@ function userProfile() {
     const themeSetting = document.createElement('section');
     themeSetting.className = 'theme-setting';
     themeSetting.innerHTML = `
-        <h2>Theme:</h2>
         <label>
             <button type="button" onclick="changeTheme('default')"> Default </button>
         </label>
@@ -126,7 +127,7 @@ function userProfile() {
         const email = document.getElementById('email').value;
 
         // Validation for username length
-        
+
         if (username.length < 4) {
         alert("Username must be at least 4 characters long.");
         return; // Stop the function if validation fails
